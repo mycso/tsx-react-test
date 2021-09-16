@@ -55,19 +55,20 @@ class ProblemThree extends Component {
   render() {
     const { classes }: any = this.props;
     const mockData = createMockData();
+
+    console.log(mockData);
+
     return (
       <div className={classes.container}>
         <Paper>
           <List className={classes.root}>
-            {mockData.map((item, i) => {
-              return (
-                <QuestionListItem
-                  item={item}
-                  key={item.id}
-                  divider={i !== mockData.length - 1}
-                />
-              );
-            })}
+            {mockData.map((item, i) =>
+              <QuestionListItem
+                item={item}
+                key={item.id}
+                divider={i !== mockData.length - 1}
+              />
+            )}
           </List>
         </Paper>
       </div>

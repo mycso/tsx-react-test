@@ -13,7 +13,7 @@ const defaultMock: any = {
   description: "You know nothing, Jon Snow.",
 };
 
-const createRowData = ({ name, species, Icon, description }: any) => {
+export const createRowData = ({ name, species, Icon, description }: any) => {
   let rowData = defaultMock;
   rowData.id = uuidv4();
   rowData.name = name ? name : rowData.name;
@@ -23,4 +23,3 @@ const createRowData = ({ name, species, Icon, description }: any) => {
   return rowData;
 };
 
-export { createRowData };

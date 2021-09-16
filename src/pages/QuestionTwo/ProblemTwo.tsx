@@ -14,21 +14,18 @@ class ProblemTwo extends Component<any, any> {
   constructor(props: any) {
     super(props);
     this.state = {
-      title: null,
-      imgSrc: null,
-      body: "",
+      data: null,
       loading: true,
     };
     try {
       // @ts-ignore
-      getCardDetails.then((data) => {
+      getCardDetails().then((data) => {
+        console.log(data)
         if (!data) {
           throw new Error("No Data");
         }
         this.setState({
-          title: data.title,
-          imgSrc: data.imgSrc,
-          body: data.body,
+          data: data,
           loading: false,
         });
       });
@@ -38,7 +35,9 @@ class ProblemTwo extends Component<any, any> {
   }
   render() {
     const { classes } = this.props;
-    const { title, imgSrc, body, loading } = this.state;
+    const { data, loading } = this.state;
+    console.log(data)
+
     if (loading) {
       return (
         <div className={classes.spinner}>
@@ -49,14 +48,14 @@ class ProblemTwo extends Component<any, any> {
     return (
       <div className={classes.container}>
         <Card className={classes.card}>
-          <CardMedia className={classes.media} image={imgSrc} title={title} />
+          <CardMedia className={classes.media} image={this.state.data[2]} title={this.state.data[0]} />
           <CardContent className={classes.content}>
-            <Typography gutterBottom variant="h5" component="h2">
-              {title}
+            <Typography align="center" gutterBottom variant="h5" component="h2">
+              {this.state.data[0]}
             </Typography>
             <div
               className={classes.body}
-              dangerouslySetInnerHTML={{ __html: body }}
+              dangerouslySetInnerHTML={{ __html: this.state.data[1] }}
             />
           </CardContent>
         </Card>

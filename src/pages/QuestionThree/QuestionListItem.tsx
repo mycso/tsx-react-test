@@ -19,14 +19,10 @@ const useStyles = makeStyles(() => ({
 }));
 
 export const QuestionListItem = ({
-  icon,
-  name,
-  species,
-  id,
-  divider,
-  description,
+  item,
+  divider
 }: any) => {
-  const Icon = icon;
+  const Icon = item.icon;
   const classes = useStyles();
   return (
     <Fragment>
@@ -37,7 +33,7 @@ export const QuestionListItem = ({
           </Avatar>
         </ListItemAvatar>
         <ListItemText
-          primary={`${name}: ${species ? species : "Other"}`}
+          primary={`${item.name}: ${item.species ? item.species : "Other"}`}
           secondary={
             <React.Fragment>
               <div>
@@ -45,7 +41,7 @@ export const QuestionListItem = ({
                   Description:
                 </Typography>
                 <Typography variant="body2" className={classes.label}>
-                  {description}
+                  {item.description}
                 </Typography>
               </div>
               <div>
@@ -53,7 +49,7 @@ export const QuestionListItem = ({
                   Guid:
                 </Typography>
                 <Typography variant="body2" className={classes.label}>
-                  {id ? id : "ERROR "}
+                  {item.id ? item.id : "ERROR "}
                 </Typography>
               </div>
             </React.Fragment>
